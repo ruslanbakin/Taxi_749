@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Document</title>
+    <style>
+                    .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            }
+
+            .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            }
+
+            .slide {
+            min-width: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            }
+
+            .slide img {
+            height: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            }
+
+            input[type="radio"] {
+            display: none;
+            }
+
+            .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            }
+
+            .carousel-dots label {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            }
+
+            #slide1:checked ~ .carousel-slides {
+            transform: translateX(0%);
+            }
+
+            #slide2:checked ~ .carousel-slides {
+            transform: translateX(-100%);
+            }
+
+            #slide3:checked ~ .carousel-slides {
+            transform: translateX(-200%);
+            }
+
+            #slide4:checked ~ .carousel-slides {
+            transform: translateX(-300%);
+            }
+
+            #slide5:checked ~ .carousel-slides {
+            transform: translateX(-400%);
+            }
+
+            #slide6:checked ~ .carousel-slides {
+            transform: translateX(-500%);
+            }
+
+            #slide7:checked ~ .carousel-slides {
+            transform: translateX(-600%);
+            }
+
+            #slide8:checked ~ .carousel-slides {
+            transform: translateX(-700%);
+            }
+
+            #slide9:checked ~ .carousel-slides {
+            transform: translateX(-800%);
+            }
+
+            #slide10:checked ~ .carousel-slides {
+            transform: translateX(-900%);
+            }
+
+            input[type="radio"]:checked + .carousel-dots label {
+            background-color: #fff;
+            }
+
+            .prev,
+            .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            line-height: 100%;
+            }
+
+            .prev {
+            left: 0;
+            }
+
+            .next {
+            right: 0;
+            }
+
+    </style>
+</head>
+<body bgcolor="#FFA07A"> 
+   
+    <font size="4">
+        <h1 align="center">Лучший диспетчер</h1><br>
+    </font>
+    <h1>Коротко о ГАЛЕ:</h1>
+    <ul>
+        <li>Эльф</li>
+        <li>Долгожданка</li>
+        <li>Штурмэн Темика</li>
+        <li>Авто-консультант</li>
+        <li>Гном</li>
+    </ul>
+
+    <!-- Карусель -->
+    <div class="carousel">
+        <input type="radio" name="dots" id="slide1" checked>
+        <input type="radio" name="dots" id="slide2">
+        <input type="radio" name="dots" id="slide3">
+        <input type="radio" name="dots" id="slide4">
+        <input type="radio" name="dots" id="slide5">
+        <input type="radio" name="dots" id="slide6">
+        <input type="radio" name="dots" id="slide7">
+        <input type="radio" name="dots" id="slide8">
+        <input type="radio" name="dots" id="slide9">
+        <input type="radio" name="dots" id="slide10">
+
+        <div class="carousel-slides">
+            <div class="slide">
+                <img src="/img/ГАЛ.jfif" alt="Изображение 1">
+            </div>
+            <div class="slide">
+
+                
+                <img src="/img/1.jfif" alt="Изображение 2">
+            </div>
+            <div class="slide">
+                <img src="/img/2.jfif" alt="Изображение 3">
+            </div>
+            <div class="slide">
+                <img src="/img/3.jfif" alt="Изображение 4">
+            </div>
+            <div class="slide">
+                <img src="/img/4.jfif" alt="Изображение 5">
+            </div>
+            <div class="slide">
+                <img src="/img/5.jfif" alt="Изображение 6">
+            </div>
+            <div class="slide">
+                <img src="/img/6.jfif" alt="Изображение 7">
+            </div>
+            <div class="slide">
+                <img src="/img/7.jfif" alt="Изображение 8">
+            </div>
+            <div class="slide">
+                <img src="/img/8.jfif" alt="Изображение 9">
+            </div>
+            <div class="slide">
+                <img src="/img/9.jfif" alt="Изображение 10">
+            </div>
+            <div class="slide">
+                <img src="/img/10.jfif" alt="Изображение 11">
+            </div>
+        </div>
+
+        <div class="carousel-dots">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+            <label for="slide4"></label>
+            <label for="slide5"></label>
+            <label for="slide6"></label>
+            <label for="slide7"></label>
+            <label for="slide8"></label>
+            <label for="slide9"></label>
+            <label for="slide10"></label>
+        </div>
+
+        <div class="prev" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="next" onclick="changeSlide(1)">&#10095;</div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        
+        function changeSlide(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 1) {
+                currentSlide = 10;
+            } else if (currentSlide > 10) {
+                currentSlide = 1;
+            }
+
+            document.getElementById('slide' + currentSlide).checked = true;
+        }
+    </script>
+
+</body>
+</html>
